@@ -4,8 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test Task</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/index.js" defer></script>
 </head>
 <body>
-  
+  <section class="section page-width" id="featured-products">
+    <div class="section__header">
+      <h2 class="section__title">Featured products</h2>
+      <p class="section__desc">
+        Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit lectus cursus phasellus ridiculus nostra fames. Sollicitudin mi facilisi congue tellus dictumst eu ligula arcu. Vivamus luctus vel duis tempor curabitur potenti rhoncus. Orci dictum et varius feugiat pulvinar euismod iaculis diam. Lacus inceptos vel fusce interdum molestie luctus cubilia.
+      </p>
+    </div>
+    <div class="section__content">
+      <div class="products-wrapper" id="products">
+        <template id="product-template">
+          <div class="product">
+            <div class="product__image-wrapper">
+              <img class="product__image" src="" alt="image">
+              <img class="product__image product__image--hover" src="" alt="image-on-hover">
+            </div>
+            <div class="product__content">
+              <h3 class="product__title"></h3>
+              <p class="product__description"></p>
+              <div class="product__price">
+                <span class="product__price-sale"></span>
+                <span class="product__price-default"></span>
+              </div>
+            </div>
+          </div>
+        </template>    
+      </div>
+    </div>
+  </section>
+  <section class="section page-width" id="faq">
+    <div class="section__header">
+      <h2 class="section__title">Frequently asked question</h2>
+      <p class="section__desc">
+        Can’t find the answer you’re looking for? Reach out to our <a class="link" href="#">customer support</a> team.
+      </p>
+    </div>
+    <div class="section__content">
+      <div class="accordion">
+        <template>
+          <div class="accordion__item">
+            <button class="accordion__header" aria-expanded="false">
+              <span class="accordion__header-text"></span>
+              <span class="accordion__header-icon"></span>
+            </button>
+            <div class="accordion__content">
+              <p class="accordion__text"></p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
