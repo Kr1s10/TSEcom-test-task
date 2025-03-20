@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchProducts (url) {
   try {
+    const loader = document.querySelector('.loader');
+    loader.classList.add('show');
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -23,6 +25,7 @@ async function fetchProducts (url) {
 
     const data = await response.json();
     renderProducts(data.data.products.edges, 'products', 'product-template');
+    loader.classList.remove('show');
 
   } catch (error) {
     console.error('Error in product request:', error);
@@ -31,6 +34,7 @@ async function fetchProducts (url) {
 
 function renderProducts(products, containerId, templateId) {
   const container = document.getElementById(containerId);
+  container.style.display = 'none';
   const productTemplate = document.getElementById(templateId);
 
   products.forEach(edge => {
@@ -38,6 +42,8 @@ function renderProducts(products, containerId, templateId) {
     const productElement = product.generateMarkupElement();
     container.append(productElement);
   });
+
+  container.style.display = 'grid';
 }
 
 function renderAccordion(items, containerId, templateId) {
@@ -53,7 +59,7 @@ function renderAccordion(items, containerId, templateId) {
 function createAccordionItem({title, content}, template, container, isFirstItem) {
   const clone = template.content.cloneNode(true);
   const accordionItem = clone.querySelector(".accordion__item");
-  const accordionButton = accordionItem.querySelector(".accordion__header")
+  const accordionButton = accordionItem.querySelector(".accordion__header");
   const titleElement = accordionItem.querySelector(".accordion__header-text");
   const contentElement = accordionItem.querySelector(".accordion__text");
 
