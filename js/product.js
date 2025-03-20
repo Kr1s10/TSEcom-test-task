@@ -31,8 +31,6 @@ export default class Product {
       if (imageData.altText) {
         imageElement.alt = imageData.altText;
       }
-    } else {
-      imageElement?.remove();
     }
   }
 
@@ -61,10 +59,10 @@ export default class Product {
     this.updateTextContent(descriptionElement, this.description);
 
     const salePriceElement = productElement.querySelector(".product__price-sale");
-    const defaultPriceElement = productElement.querySelector(".product__price-default");
-
-    defaultPriceElement.textContent = this.price;
     this.updateTextContent(salePriceElement, this.compareAtPrice);
+
+    const defaultPriceElement = productElement.querySelector(".product__price-default");
+    this.updateTextContent(defaultPriceElement, this.price);
 
     return productElement;
   }
