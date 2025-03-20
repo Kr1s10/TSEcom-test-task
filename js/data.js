@@ -3,7 +3,7 @@ export const ACCESS_TOKEN = '7e174585a317d187255660745da44cc7';
 
 export const query = `
   {
-    products(first: 10) {
+    products(first: 8) {
       edges {
         node {
           title

@@ -7,9 +7,9 @@ export default class Product {
     this.template = template;
     this.title = simplifiedNode.title;
     this.description = simplifiedNode.description;
-    this.price = variants[0]?.price?.amount || null;
+    this.price = variants[0]?.price?.amount ? Math.round(variants[0].price.amount) : null;
     this.currency = variants[0]?.price?.currencyCode || null;
-    this.compareAtPrice = variants[0]?.compareAtPrice?.amount || null;
+    this.compareAtPrice = variants[0]?.compareAtPrice?.amount ? Math.round(variants[0].compareAtPrice.amount) : null;
     this.image = images[0];
     this.hoverImage = images[1];
   }
@@ -63,13 +63,8 @@ export default class Product {
     const salePriceElement = productElement.querySelector(".product__price-sale");
     const defaultPriceElement = productElement.querySelector(".product__price-default");
 
-    if (this.compareAtPrice) {
-      defaultPriceElement.textContent = this.compareAtPrice;
-      salePriceElement.textContent = this.price;
-    } else {
-      defaultPriceElement.textContent = this.price;
-      salePriceElement.remove();
-    }
+    defaultPriceElement.textContent = this.price;
+    this.updateTextContent(salePriceElement, this.compareAtPrice);
 
     return productElement;
   }
